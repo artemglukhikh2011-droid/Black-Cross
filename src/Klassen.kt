@@ -43,5 +43,10 @@ class Monster(
     defense: Int,
     speed: Int,
     posX: Int,
-    posY: Int
-) : Entity(name, health, attack, defense, speed, posX, posY)
+    posY: Int,
+    val canPassWalls: Boolean = false   // Neu: true für Kobold
+) : Entity(name, health, attack, defense, speed, posX, posY) {
+
+    val symbol: Char
+        get() = name.first().uppercaseChar()
+}

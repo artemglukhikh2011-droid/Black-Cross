@@ -1,19 +1,21 @@
 fun main() {
     val map = GameMap(15, 10)
-    map.generateSimpleMaze()
-
-    // Truhen manuell setzen (Koordinaten anpassen)
-    map.tiles[2][3] = TileType.CHEST
-    map.tiles[5][7] = TileType.CHEST
-    map.tiles[8][2] = TileType.CHEST
-
+    map.generateRandomMaze()
+    placeRandomChests(map, 3)   // 3 Truhen zufällig platzieren
 
 
     val player = Player(health = 10, attack = 3, defense = 2, speed = 2, posX = 1, posY = 1)
-    val monsters = mutableListOf(
-        Monster("Goblin", health = 5, attack = 4, defense = 1, speed = 1, posX = 7, posY = 5),
-        Monster("Ork", health = 8, attack = 6, defense = 2, speed = 1, posX = 10, posY = 3)
-    )
+    val monsters = mutableListOf<Monster>()
+    val goblinPos = findRandomEmptyCell(map)
+    monsters.add(Monster("Goblin", 5, 4, 1, 1, goblinPos.first, goblinPos.second ))
+    val goblin2Pos = findRandomEmptyCell(map)
+    monsters.add(Monster("Goblin", 5, 4, 1, 1, goblin2Pos.first, goblin2Pos.second))
+    // Kobold – kann durch Wände gehen
+    val koboldPos = findRandomEmptyCell(map)
+    monsters.add(Monster(name = "Kobold", health = 6, attack = 4, defense = 1, speed = 2, posX = koboldPos.first, posY = koboldPos.second, canPassWalls =true ))
+
+
+
     val items = mutableListOf<Item>() // Gegenstände, die der Spieler trägt
 
     var round = 0
