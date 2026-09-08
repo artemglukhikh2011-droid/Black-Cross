@@ -16,3 +16,25 @@ fun printMap(map: GameMap, player: Player, monsters: List<Monster>) {
     }
     // Statusausgabe wie gehabt ...
 }
+fun printPlayerStatus(player: Player) {
+    println("=== Spieler-Status ===")
+    println("Leben: ${player.health}")
+    println("Angriff: ${player.attack}")
+    println("Schutz: ${player.defense}")
+    println("Geschwindigkeit: ${player.speed}")
+    println("======================")
+}
+fun printMonsterStatus(monsters: List<Monster>) {
+    println("--- Lebende Monster ---")
+    var found = false
+    for (monster in monsters) {
+        if (monster.isAlive()) {
+            println("${monster.name}: Leben ${monster.health}")
+            found = true
+        }
+    }
+    if (!found) {
+        println("Keine Monster mehr am Leben.")
+    }
+    println("-----------------------")
+}
