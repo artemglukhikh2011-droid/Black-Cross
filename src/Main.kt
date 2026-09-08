@@ -1,4 +1,5 @@
 fun main() {
+    println("Hello Gamer, to move, write in console w (go up), s (go down), a (go left) or d (go right)+enter, to attack or open the chest, do the same, your goal is, to beat all the monster")
     val map = GameMap(15, 10)
     map.generateRandomMaze()
     placeRandomChests(map, 3)   // 3 Truhen zufällig platzieren
