@@ -1,1 +1,2 @@
-Welcome, this is my first very small project. IT has no Release, so you need to Install IntelliJ IDEA first (it's free) If you want to Play this game.
+Welcome, this is my first very small project. IT has no Release, so you need to install IntelliJ IDEA first (it's free) If you want to play this game. 
+How to play: w-go up, s- go down, a- go left, d- go right. Because it's prealfa version, to move you need to write w, s, d or a in console. To attack, just go on the monster, to open a chest, the same. G is a Goblin, K is Kobold, Kobold can wals on the walls. 
