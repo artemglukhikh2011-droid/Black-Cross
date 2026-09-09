@@ -1,6 +1,6 @@
 fun printMap(map: GameMap, player: Player, monsters: List<Monster>) {
-    for (y in 0 until map.height) {
-        for (x in 0 until map.width) {
+    for (y in 0..< map.height) {
+        for (x in 0..< map.width) {
             val hasPlayer = (player.posX == x && player.posY == y)
             val monsterAt = monsters.firstOrNull { it.posX == x && it.posY == y && it.isAlive() }
             val tile = map.tiles[y][x]

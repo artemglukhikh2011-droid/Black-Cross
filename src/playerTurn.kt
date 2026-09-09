@@ -2,7 +2,7 @@ fun playerTurn(map: GameMap, player: Player, monsters: List<Monster>) {
     var movesLeft = player.speed
     while (movesLeft > 0) {
         println("Bewegungen übrig: $movesLeft")
-        val input = readLine()?.lowercase() ?: ""
+        val input = readlnOrNull()?.lowercase() ?: ""
         val dx = when (input) {
             "w", "up" -> 0 to -1
             "s", "down" -> 0 to 1
