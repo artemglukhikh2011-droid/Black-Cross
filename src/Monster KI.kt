@@ -8,7 +8,7 @@ fun monstersTurn(map: GameMap, player: Player, monsters: MutableList<Monster>) {
 
         if (kotlin.math.abs(dx) + kotlin.math.abs(dy) == 1) {
             // Benachbart -> Angriff
-            fight(monster, player)
+            attackWithCounterAttack(monster, player)
         } else {
             // Bewegung: einen Schritt in Richtung Spieler (einfach)
             val stepX = if (dx > 0) 1 else if (dx < 0) -1 else 0

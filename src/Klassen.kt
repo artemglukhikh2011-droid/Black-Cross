@@ -23,6 +23,20 @@ open class Entity(
     var posY: Int
 ) {
     fun isAlive() = health > 0
+
+    /**
+     * Imitieren einen Angriff gegen [defender].
+     *
+     * [Entity.health] für [defender] verringert auf den Unterschied zwischen [Entity.defense] für [defender]
+     * und einiger [attack], mindestens 1.
+     *
+     * @return der Anzahl von Schaden verursacht
+     */
+    fun doAttack(defender: Entity): Int {
+        val damageToDefender = (this.attack - defender.defense).coerceAtLeast(1)
+        defender.health -= damageToDefender
+        return damageToDefender
+    }
 }
 
 // Spieler-Klasse (erbt von Entity)
