@@ -4,8 +4,8 @@ class GameMap(val width: Int, val height: Int) {
 
     fun generateRandomMaze() {
         // Zuerst alles mit Wänden füllen
-        for (y in 0 until height) {
-            for (x in 0 until width) {
+        for (y in 0..< height) {
+            for (x in 0..< width) {
                 tiles[y][x] = TileType.WALL
             }
         }
