@@ -22,7 +22,6 @@ fun printPlayerStatus(player: Player) {
     println("Angriff: ${player.attack}")
     println("Schutz: ${player.defense}")
     println("Geschwindigkeit: ${player.speed}")
-    println("======================")
 }
 fun printMonsterStatus(monsters: List<Monster>) {
     println("--- Lebende Monster ---")

@@ -5,17 +5,16 @@ fun main() {
 
 
     val player = Player(health = 10, attack = 3, defense = 2, speed = 2, posX = 1, posY = 1)
+    val occupied = mutableListOf(1 to 1)  // Spielerposition (bereits besetzt)
     val monsters = mutableListOf<Monster>()
-    val goblinPos = findRandomEmptyCell(map)
-    monsters.add(Monster("Goblin", 5, 4, 1, 1, goblinPos.first, goblinPos.second ))
-    val goblin2Pos = findRandomEmptyCell(map)
-    monsters.add(Monster("Goblin", 5, 4, 1, 1, goblin2Pos.first, goblin2Pos.second))
-    // Kobold – kann durch Wände gehen
-    val koboldPos = findRandomEmptyCell(map)
-    monsters.add(Monster(name = "Kobold", health = 6, attack = 4, defense = 1, speed = 2, posX = koboldPos.first, posY = koboldPos.second, canPassWalls =true ))
 
+    val goblinPos = findRandomEmptyCell(map, occupied)
+    occupied.add(goblinPos)
+    monsters.add(Monster("Goblin", 5, 4, 1, 1, goblinPos.first, goblinPos.second))
 
-
+    val koboldPos = findRandomEmptyCell(map, occupied)
+    occupied.add(koboldPos)
+    monsters.add(Monster("Kobold", 8, 6, 2, 2, koboldPos.first, koboldPos.second, canPassWalls = true))
     val items = mutableListOf<Item>() // Gegenstände, die der Spieler trägt
 
     var round = 0
