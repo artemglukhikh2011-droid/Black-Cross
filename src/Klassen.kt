@@ -9,7 +9,7 @@ data class Item(
     val bonusAttack: Int = 0,
     val bonusDefense: Int = 0,
     val bonusHealth: Int = 0,
-    val bonusSpeed: Int = 0
+    val bonusSpeed: Int = 0,
 )
 
 // Basisklasse für alle "lebenden" Objekte (Spieler und Monster)
@@ -33,7 +33,10 @@ class Player(
     speed: Int,
     posX: Int,
     posY: Int
-) : Entity("Spieler", health, attack, defense, speed, posX, posY)
+) : Entity("Spieler", health, attack, defense, speed, posX, posY){
+    // Neu: Besitzt der Spieler den Oguresmalldragon?
+    var hasOguresmalldragon: Boolean = false
+}
 
 // Monster-Klasse
 class Monster(

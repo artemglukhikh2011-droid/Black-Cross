@@ -26,6 +26,7 @@ fun main() {
 
         printPlayerStatus(player)
         printMonsterStatus(monsters)
+        printRandomOgureMessage(player)
 
         // Spielerzug
         playerTurn(map, player, monsters)
