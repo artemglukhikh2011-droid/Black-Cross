@@ -19,7 +19,7 @@ fun playerTurn(map: GameMap, player: Player, monsters: List<Monster>) {
                 val monster = monsters.find { it.posX == newX && it.posY == newY && it.isAlive() }
                 if (monster != null) {
                     // Kampf starten
-                    fight(player, monster)
+                    attackWithCounterAttack(player, monster)
                     movesLeft = 0 // Kampf beendet die Bewegung für diese Runde
                 } else {
                     // ===== HIER DEN TRUHEN-CODE EINFÜGEN =====
