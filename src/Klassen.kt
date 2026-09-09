@@ -53,7 +53,7 @@ class Player(
 }
 
 // Monster-Klasse
-class Monster(
+class Monster private constructor(
     name: String,
     health: Int,
     attack: Int,
@@ -66,4 +66,18 @@ class Monster(
 
     val symbol: Char
         get() = name.first().uppercaseChar()
+
+    companion object {
+        fun createByName(name: String, posX: Int, posY: Int): Monster {
+            val template = listOfMonsters[name]!!
+            return Monster(
+                template.name, template.health, template.attack, template.defense, template.speed, posX, posY, template.canPassWalls
+            )
+        }
+
+        private val listOfMonsters: Map<String, Monster> = listOf(
+            Monster(name = "Goblin", health = 5, attack = 4, defense = 1, speed = 1, posX = 0, posY = 0),
+            Monster(name = "Kobold", health = 8, attack = 6, defense = 2, speed = 2, posX = 0, posY = 0, canPassWalls = true)
+        ).associateBy { it.name }
+    }
 }
