@@ -7,4 +7,8 @@
     <option name="apiVersion" value="2.4" />
     <option name="languageVersion" value="2.4" />
   </component>
+  <component name="KotlinJpsPluginSettings">
+    <option name="externalSystemId" value="Gradle" />
+    <option name="version" value="2.4.10" />
+  </component>
 </project>
