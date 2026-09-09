@@ -10,11 +10,11 @@ fun main() {
 
     val goblinPos = findRandomEmptyCell(map, occupied)
     occupied.add(goblinPos)
-    monsters.add(Monster("Goblin", 5, 4, 1, 1, goblinPos.first, goblinPos.second))
+    monsters.add(Monster.createByName(name = "Goblin", posX = goblinPos.first, posY = goblinPos.second))
 
     val koboldPos = findRandomEmptyCell(map, occupied)
     occupied.add(koboldPos)
-    monsters.add(Monster("Kobold", 8, 6, 2, 2, koboldPos.first, koboldPos.second, canPassWalls = true))
+    monsters.add(Monster.createByName(name = "Kobold", posX = koboldPos.first, posY = koboldPos.second))
     val items = mutableListOf<Item>() // Gegenstände, die der Spieler trägt
 
     var round = 0
