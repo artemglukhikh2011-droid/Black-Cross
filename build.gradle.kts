@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.4.10"
+    application
 }
 
 group = "org.example"
@@ -27,4 +28,21 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+// specify the main class (otherwise "gradlew.bat run" will fail)
+application {
+    mainClass.set("MainKt")
+}
+
+// configure our jar to be runnable: main class, bundle libraries
+// e.g. "java -jar build/libs/Black-Cross-1.0-SNAPSHOT.jar"
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "MainKt"
+    }
+
+    // includes external libraries (like Kotlin runtime) into the JAR
+    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
