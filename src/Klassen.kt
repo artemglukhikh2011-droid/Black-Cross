@@ -3,7 +3,7 @@ enum class TileType {
     EMPTY, WALL, PLAYER, MONSTER, CHEST
 }
 
-// Gegenstand, der in Truhen gefunden werden kann
+// Items
 data class Item(
     val name: String,
     val bonusAttack: Int = 0,
@@ -12,7 +12,7 @@ data class Item(
     val bonusSpeed: Int = 0,
 )
 
-// Basisklasse für alle "lebenden" Objekte (Spieler und Monster)
+// Class for all alive objects
 open class Entity(
     var name: String,
     var health: Int,
@@ -39,7 +39,7 @@ open class Entity(
     }
 }
 
-// Spieler-Klasse (erbt von Entity)
+//  Player Class
 class Player(
     health: Int,
     attack: Int,
@@ -47,9 +47,10 @@ class Player(
     speed: Int,
     posX: Int,
     posY: Int
-) : Entity("Spieler", health, attack, defense, speed, posX, posY){
-    // Neu: Besitzt der Spieler den Oguresmalldragon?
+) : Entity("Player", health, attack, defense, speed, posX, posY){
+    // Neu: Has a Player Oguresmalldragon
     var hasOguresmalldragon: Boolean = false
+    var wyvernPoisonTurns: Int = 0             // Potion Turns
 }
 
 // Monster-Klasse
@@ -61,7 +62,7 @@ class Monster private constructor(
     speed: Int,
     posX: Int,
     posY: Int,
-    val canPassWalls: Boolean = false   // Neu: true für Kobold
+    val canPassWalls: Boolean = false   // New: true for Kobold
 ) : Entity(name, health, attack, defense, speed, posX, posY) {
 
     val symbol: Char
@@ -77,7 +78,8 @@ class Monster private constructor(
 
         private val listOfMonsters: Map<String, Monster> = listOf(
             Monster(name = "Goblin", health = 5, attack = 4, defense = 1, speed = 1, posX = 0, posY = 0),
-            Monster(name = "Kobold", health = 8, attack = 6, defense = 2, speed = 2, posX = 0, posY = 0, canPassWalls = true)
+            Monster(name = "Kobold", health = 5, attack = 5, defense = 0, speed = 2, posX = 0, posY = 0, canPassWalls = true),
+            Monster(name = "Wywern", health = 5, attack = 4, defense = 1, speed = 1, posX = 0, posY = 0)
         ).associateBy { it.name }
     }
 }

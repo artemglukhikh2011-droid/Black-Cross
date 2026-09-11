@@ -1,10 +1,10 @@
 // Beispiel: Truhen-Inhalt generieren
 fun generateRandomItem(): Item {
     val items = listOf(
-        Item("Schwert", bonusAttack = 2),
-        Item("Schild", bonusDefense = 2),
-        Item("Heiltrank", bonusHealth = 3),
-        Item("Stiefel", bonusSpeed = 1),
+        Item("Sword", bonusAttack = 2),
+        Item("Shild", bonusDefense = 2),
+        Item("Potion", bonusHealth = 3),
+        Item("SpellofSpeed", bonusSpeed = 1),
         Item("Oguresmalldragon")   //  neuer Gegenstand, nur der Name zählt
     )
     return items.random()
@@ -14,7 +14,7 @@ fun applyItem(player: Player, item: Item) {
     // Besondere Prüfung für den Oguresmalldragon
     if (item.name == "Oguresmalldragon") {
         player.hasOguresmalldragon = true
-        println("Du hast den Ogure, einen kleinen Drachen, gefunden! Er wird dich von nun an begleiten.")
+        println("You found Ogure, small dragon, please keep him.🐉")
     }
 
     // Normale Boni anwenden (der Oguresmalldragon hat keine, daher passiert hier nichts)
@@ -25,6 +25,6 @@ fun applyItem(player: Player, item: Item) {
 
     // Nur Werte ausgeben, wenn es Boni gab (optional)
     if (item.bonusAttack != 0 || item.bonusDefense != 0 || item.bonusHealth != 0 || item.bonusSpeed != 0) {
-        println("Neue Werte: Angriff ${player.attack}, Verteidigung ${player.defense}, Leben ${player.health}, Geschwindigkeit ${player.speed}")
+        println("New Stats: Attack ${player.attack}, Defense ${player.defense}, HP ${player.health}, Speed ${player.speed}")
     }
 }
